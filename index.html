@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Intelligence & Investigation Bureau | Pan-India Private Detectives</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #0b0f19;
+            --secondary-dark: #111827;
+            --accent-gold: #d4af37;
+            --accent-gold-hover: #c59b27;
+            --text-light: #f3f4f6;
+            --text-gray: #9ca3af;
+            --card-bg: #1f2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: #05070c;
+            padding: 8px 5%;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .top-bar span {
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .top-bar a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: var(--secondary-dark);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .cta-btn-sm {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .cta-btn-sm:hover {
+            background-color: var(--accent-gold-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.95)), url('https://images.unsplash.com/photo-1453945619913-79ec89ba656e?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            padding: 80px 5%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trust-badge {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--accent-gold);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            max-width: 900px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .hero h1 span {
+            color: var(--accent-gold);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat-item h3 {
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 70px 5%;
+            background-color: var(--secondary-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-gold);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Features / Why Us */
+        .features {
+            padding: 70px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .feature-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .feature-list i {
+            color: var(--accent-gold);
+            margin-top: 4px;
+        }
+
+        /* Inquiry Form Section */
+        .inquiry-section {
+            padding: 70px 5%;
+            background: linear-gradient(135deg, #0b0f19 0%, #161f33 100%);
+            display: flex;
+            justify-content: center;
+        }
+
+        .inquiry-box {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .inquiry-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .inquiry-box p.subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            color: var(--text-light);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--secondary-dark);
+            border: 1px solid #374151;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-gold-hover);
+        }
+
+        .security-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        .security-note i {
+            color: #10b981;
+        }
+
+        /* Direct Call Floating / Action Banner */
+        .direct-contact {
+            background-color: #111827;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .direct-contact a {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #05070c;
+            padding: 30px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-gray);
+            font-size: 0.85rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar with Direct Phone Number -->
+    <div class="top-bar">
+        <div><i class="fa-solid fa-shield-halved"></i> 100% Confidential & Secure Operations</div>
+        <div>Direct Helpline: <a href="tel:9964843767"><i class="fa-solid fa-phone"></i> +91 99648 43767</a></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-eye"></i> APEX INTELLIGENCE
+        </div>
+        <ul class="nav-links">
+            <li><a href="#services" style="display: none;">Services</a></li>
+            <li><a href="#contact" class="cta-btn-sm">Call Now</a></li>
+        </ul>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="trust-badge">
+            <i class="fa-solid fa-star" style="color: var(--accent-gold);"></i> 4.8/5 Rating By 1,200+ Verified Clients
+        </div>
+        <h1>India’s Trusted Elite <span>Private Investigation</span> Agency</h1>
+        <p>Uncovering the truth with absolute discretion, rigorous fieldwork, and intelligence networks spread across every corner of India.</p>
+        <a href="tel:9964843767" class="cta-btn-sm" style="padding: 12px 25px; font-size: 1rem;"><i class="fa-solid fa-phone"></i> Call: +91 9964843767</a>
+
+        <div class="hero-stats">
+            <div class="stat-item">
+                <h3>12+</h3>
+                <p>Years Expertise</p>
+            </div>
+            <div class="stat-item">
+                <h3>Pan-India</h3>
+                <p>Active Operations</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Privacy Guaranteed</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Our Specialized Investigation Services</h2>
+            <p>Executed by seasoned field operatives with absolute privacy and legal compliance.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-building-shield"></i>
+                <h3>Corporate Investigations</h3>
+                <p>Employee background checks, intellectual property theft, corporate espionage, and financial fraud tracking.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-ring"></i>
+                <h3>Matrimonial Verification</h3>
+                <p>Pre and post-alliance background checks, lifestyle checks, financial standing, and family history verification.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-user-secret"></i>
+                <h3>Surveillance & Tracking</h3>
+                <p>Covert ground surveillance, evidence gathering, missing person tracing, and asset recovery support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features / Why Us -->
+    <section class="features" id="about">
+        <div class="feature-content">
+            <h2>Why High-Profile Clients Trust Apex Intelligence</h2>
+            <p style="color: var(--text-gray);">We understand discretion is non-negotiable. Every case is handled under strict security protocols.</p>
+            
+            <ul class="feature-list">
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div><strong>Pan-India Execution:</strong> Our local networks allow seamless operation across any city, town, or state in India.</div>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div><strong>Absolute Confidentiality:</strong> Your data and case details are securely managed with zero leakage risk.</div>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div><strong>Court-Admissible Evidence:</strong> Comprehensive photo, video, and documentary evidence compiled safely for legal recourse.</div>
+                </li>
+            </ul>
+        </div>
+        <div style="background: var(--card-bg); padding: 30px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.2);">
+            <h3 style="font-family: 'Cinzel', serif; margin-bottom: 12px; color: var(--accent-gold);">Immediate Assistance</h3>
+            <p style="color: var(--text-gray); margin-bottom: 20px;">Need urgent consultation? Speak directly with our senior lead investigator now.</p>
+            <a href="tel:9964843767" class="submit-btn" style="text-align: center; display: block; text-decoration: none; line-height: normal;">
+                <i class="fa-solid fa-phone"></i> +91 9964843767
+            </a>
+        </div>
+    </section>
+
+    <!-- Inquiry Section -->
+    <section class="inquiry-section" id="contact">
+        <div class="inquiry-box">
+            <h3>Start a Confidential Inquiry</h3>
+            <p class="subtitle">Fill out the details below. Our lead investigator will contact you securely.</p>
+            
+            <form id="inquiryForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label>Your Name or Alias *</label>
+                    <input type="text" required placeholder="Enter name or safe alias">
+                </div>
+                <div class="form-group">
+                    <label>Secure Contact Number / WhatsApp *</label>
+                    <input type="tel" required placeholder="+91 XXXXX XXXXX" value="9964843767">
+                </div>
+                <div class="form-group">
+                    <label>Type of Investigation *</label>
+                    <select required>
+                        <option value="">Select Investigation Type</option>
+                        <option value="Matrimonial">Matrimonial Verification</option>
+                        <option value="Corporate">Corporate Background Check</option>
+                        <option value="Surveillance">Personal Surveillance</option>
+                        <option value="Missing">Missing Person / Asset Tracing</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Briefly Describe Your Concern *</label>
+                    <textarea rows="4" required placeholder="Your details remain completely encrypted..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Secure Inquiry</button>
+                
+                <div class="security-note">
+                    <i class="fa-solid fa-lock"></i> 256-Bit Encrypted Form &middot; Strict NDA Protected
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Direct Contact Banner -->
+    <div class="direct-contact">
+        <p style="color: var(--text-gray); margin-bottom: 5px;">Prefer direct conversation? Call us anytime:</p>
+        <a href="tel:9964843767"><i class="fa-solid fa-phone"></i> +91-9964843767</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Apex Intelligence & Investigation Bureau. All Rights Reserved.</p>
+        <p>Operating Pan-India with strict adherence to privacy and legal guidelines.</p>
+    </footer>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert("Thank you. Your inquiry has been encrypted and submitted successfully. Our case controller will reach out to you shortly on your number.");
+            document.getElementById('inquiryForm').reset();
+        }
+    </script>
+</body>
+</html>
